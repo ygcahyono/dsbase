@@ -30,3 +30,12 @@ try:
     from shapely.geometry import Polygon, MultiPolygon
 except:
     sys.exit('please install shapely')
+try:
+    import geohash
+except:
+    sys.exit('please install geohash')
+try:
+    import pyproj
+except:
+    sys.excit('please install pyproj')
+
