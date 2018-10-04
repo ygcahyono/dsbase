@@ -7,7 +7,7 @@ setuptools.setup(
     author="Yogi Cahyono",
     author_email="yogi.cahyono@grabtaxi.com",
     description="A package to help COUNTRY DATA SCIENTISTS to finish their straightforward works.",
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     packages=setuptools.find_packages(),
     install_requires=[],
     classifiers=[
