@@ -1,6 +1,8 @@
 geopandas==0.3.0
 geohash==1.0
+python-geohash==0.8.5
 pyproj==1.9.5
 shapely==1.6.4
 pydatagateway==0.1.5
+
 
