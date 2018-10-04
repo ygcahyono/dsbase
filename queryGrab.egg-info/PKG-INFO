@@ -1,0 +1,51 @@
+Metadata-Version: 1.1
+Name: queryGrab
+Version: 0.1.0
+Summary: A package to help COUNTRY DATA SCIENTISTS to finish their straightforward works.
+Home-page: UNKNOWN
+Author: Yogi Cahyono
+Author-email: yogi.cahyono@grabtaxi.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: {{ cookiecutter.package_name }}
+        {{ cookiecutter.package_name|count * "=" }}
+        
+        {% if cookiecutter.readme_pypi_badge -%}
+        .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
+            :target: https://pypi.python.org/pypi/{{ cookiecutter.package_name }}
+            :alt: Latest PyPI version
+        {%- endif %}
+        
+        {% if cookiecutter.readme_travis_badge -%}
+        .. image:: {{ cookiecutter.readme_travis_url }}.png
+           :target: {{ cookiecutter.readme_travis_url }}
+           :alt: Latest Travis CI build status
+        {%- endif %}
+        
+        {{ cookiecutter.package_description }}
+        
+        Usage
+        -----
+        
+        Installation
+        ------------
+        
+        Requirements
+        ^^^^^^^^^^^^
+        
+        Compatibility
+        -------------
+        
+        Licence
+        -------
+        
+        Authors
+        -------
+        
+        `{{ cookiecutter.package_name }}` was written by `{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>`_.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
