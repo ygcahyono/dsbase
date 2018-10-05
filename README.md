@@ -23,9 +23,11 @@ pydatagateway to become Pandas DataFrame.
 	'''
 
 ## Creds requirement.
-	- Please create your own credentials and put it into queryGrab folder. (credentials.py)
+	Please create your own credentials and put it into queryGrab folder (credentials.py).
 
 ## Functions.
+
+### Day to day work.
 
 - [Presto](#1-presto)
 	- [x] Query to Pandas DF.
@@ -36,6 +38,11 @@ pydatagateway to become Pandas DataFrame.
 - [Google Sheet](#3-google-sheet)
 	- [ ] Read google docs from known docs name.
 	- [ ] Gather all google docs file from cloud repo.
+
+### Data Science related work.
+
+	- [x] Slovin's Formula
+
 
 
 ## How to do.
@@ -60,8 +67,9 @@ booking rides (f0r example) from database.
 	example:
 	```
 	# set the geofence.
-	- lists = [106.75665329101594, -5.9485476420121, 106.87214100000006, -5.91722502774615, 106.93003999999996, -5.752303, 106.72691199999997, -5.775628, 106.72918747070298, -5.94171811791231, 106.75665329101594, -5.9485476420121]
+	lists = [106.75665329101594, -5.9485476420121, 106.87214100000006, -5.91722502774615, 106.93003999999996, -5.752303, 106.72691199999997, -5.775628, 106.72918747070298, -5.94171811791231, 106.75665329101594, -5.9485476420121]
+
 	# convert it to csv file with the determine properties.
-	- convert_polygon_to_geohash(list, name = 'default', precision= 6, city_id = 10, country_id = 6, city_name = 'Jakarta')
+	convert_polygon_to_geohash(list, name = 'default', precision= 6, city_id = 10, country_id = 6, city_name = 'Jakarta')
 	```
 

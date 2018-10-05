@@ -3,7 +3,7 @@ import sys
 
 setuptools.setup(
     name="queryGrab",
-    version="0.1.0",
+    version="1.0.0",
     url="",
     author="Yogi Cahyono",
     author_email="yogi.cahyono@grabtaxi.com",
@@ -38,5 +38,13 @@ except:
 try:
     import pyproj
 except:
-    sys.excit('please install pyproj')
-
+    sys.exit('please install pyproj')
+try:
+    import pygsheets
+except:
+    sys.exit('please install pygsheets')
+try:
+    from oauth2client.service_account import ServiceAccountCredentials
+except:
+    sys.exit('please install oauth2client')
+tyy
