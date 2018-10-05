@@ -14,19 +14,22 @@ from shapely.geometry import Polygon, MultiPolygon
 #     return name
 
 def to_geohash(name, is_neighbour = False, precision = 6, columns_to_keep=None, city_id=None, country_id=None, city_name=None):
-
     '''
-        some os this codes is reused function from convert_geojson_to_geohash credits to: jerome.montino@grabtaxi.com
+        this function is basically creating geohash file by inputing geojson file.
+        you can put is_neighbour = True if you want to create geohash file contain broader areas around the 
+        defined geofences.
+
+        ps: some os this codes is reused function from convert_geojson_to_geohash credits to: jerome.montino@grabtaxi.com
         the addtition is aimed to can convert the lists of polygon directly to geohash csv file.
     '''
-    # print(os.getcwd() +'/'+ name + '.geojson')
+    
     gdf = gpd.read_file(os.getcwd() +'/'+ name + '.geojson')
     if not columns_to_keep is None:
         gdf = gdf[columns_to_keep]
         gdf.columns = ['name', 'geometry']
     if 'name' not in gdf.columns:
-        gdf['name'] = city_name # -- geohashName
-    areas = gdf['name'].unique().tolist() # --
+        gdf['name'] = city_name 
+    areas = gdf['name'].unique().tolist() 
 
     hashtuples = []
     for area in areas:
@@ -67,13 +70,13 @@ def to_geohash(name, is_neighbour = False, precision = 6, columns_to_keep=None, 
 
         new_gdf = gpd.GeoDataFrame(neighborhood_poly, columns=['name', 'geometry'])
 
-    # export_path = filepath_noext + '_neighborhood-geohash.geojson'
         export_path = os.path.abspath(os.getcwd() +'/'+ name + '_neighborhood-geohash.geojson')
         with open(export_path, 'w') as f:
             f.write(new_gdf.to_json())
 
 
 def convert_polygon_to_geohash(lists, name = 'geohashFile', precision = 6, columns_to_keep=None, city_id=None, country_id=None, city_name=None):
+    ''' this function sum up all the process by converting list of pair geofences to geojson and creating geohash csv file '''
 
     innerList = geoHelper.innerList(lists)
     f = open(name +".geojson","w+")

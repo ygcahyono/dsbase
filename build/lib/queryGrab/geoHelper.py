@@ -3,6 +3,7 @@ import math
 import os
 import shapely.ops as ops
 import pyproj
+
 from shapely.geometry import Polygon, MultiPolygon
 from functools import partial
 from datetime import datetime
@@ -142,7 +143,7 @@ def chunks(l, n):
 def innerList(In):
     
     if len(In)%2 != 0:
-        raise ValueError('Please input even list')
+        raise ValueError('Please input the pair of polygon!')
         
     else:
         outerList = []

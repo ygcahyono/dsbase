@@ -41,7 +41,7 @@ pydatagateway to become Pandas DataFrame.
 
 ### Data Science related work.
 
-	- [x] Slovin's Formula
+- [x] Slovin's Formula
 
 
 

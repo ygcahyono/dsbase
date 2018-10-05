@@ -47,4 +47,3 @@ try:
     from oauth2client.service_account import ServiceAccountCredentials
 except:
     sys.exit('please install oauth2client')
-tyy

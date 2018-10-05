@@ -1,48 +1,87 @@
 Metadata-Version: 1.1
 Name: queryGrab
-Version: 0.1.0
+Version: 1.0.0
 Summary: A package to help COUNTRY DATA SCIENTISTS to finish their straightforward works.
 Home-page: UNKNOWN
 Author: Yogi Cahyono
 Author-email: yogi.cahyono@grabtaxi.com
 License: UNKNOWN
 Description-Content-Type: UNKNOWN
-Description: {{ cookiecutter.package_name }}
-        {{ cookiecutter.package_name|count * "=" }}
+Description: 
+        **queryGrab** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
+        in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
+        pydatagateway to become Pandas DataFrame.
         
-        {% if cookiecutter.readme_pypi_badge -%}
-        .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
-            :target: https://pypi.python.org/pypi/{{ cookiecutter.package_name }}
-            :alt: Latest PyPI version
-        {%- endif %}
         
-        {% if cookiecutter.readme_travis_badge -%}
-        .. image:: {{ cookiecutter.readme_travis_url }}.png
-           :target: {{ cookiecutter.readme_travis_url }}
-           :alt: Latest Travis CI build status
-        {%- endif %}
+        ## Installation.
         
-        {{ cookiecutter.package_description }}
+        1. Clone the depedencies.
+        	a. Anaconda (preferably using Anaconda 3.5+)
+        	'''
+        	$ conda install -c anaconda mysql-connector-python
+        	'''
         
-        Usage
-        -----
+        	b. Install pydatagateway, geopandas, shapely
+        	'''
+        	$ sudo pip install -r requirements.txt
+        	'''
         
-        Installation
-        ------------
+        2. Clone this repository and install this repository
+        	'''
+        	$ sudo python setup.py install
+        	'''
         
-        Requirements
-        ^^^^^^^^^^^^
+        ## Creds requirement.
+        	Please create your own credentials and put it into queryGrab folder (credentials.py).
         
-        Compatibility
-        -------------
+        ## Functions.
         
-        Licence
-        -------
+        ### Day to day work.
         
-        Authors
-        -------
+        - [Presto](#1-presto)
+        	- [x] Query to Pandas DF.
+        	- [ ] Delete table from Database.
+        	- [ ] Insert rows to existing table.
+        - [Geohash](#2-geohash)
+        	- [x] Create Geohash file from geofences list.
+        - [Google Sheet](#3-google-sheet)
+        	- [ ] Read google docs from known docs name.
+        	- [ ] Gather all google docs file from cloud repo.
         
-        `{{ cookiecutter.package_name }}` was written by `{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>`_.
+        ### Data Science related work.
+        
+        - [x] Slovin's Formula
+        
+        
+        
+        ## How to do.
+        
+        ### Presto.
+        Gather data from Presto Hive Grab Database and return `Pandas format DataFrame`.
+        
+        - `def queryPr(query, verbose = 1):`: 
+        
+        	example:
+        	```
+        	Q = ('''
+        	select * from public.prejoin_bookings limit 10
+        	''')
+        	df = queryPr(Q)
+        	```
+        
+        ### Geohash
+        Turn the list of pair coordinate into Geohash file that can be used to determine specific location so we can pull the exact 
+        booking rides (f0r example) from database.
+        
+        	example:
+        	```
+        	# set the geofence.
+        	lists = [106.75665329101594, -5.9485476420121, 106.87214100000006, -5.91722502774615, 106.93003999999996, -5.752303, 106.72691199999997, -5.775628, 106.72918747070298, -5.94171811791231, 106.75665329101594, -5.9485476420121]
+        
+        	# convert it to csv file with the determine properties.
+        	convert_polygon_to_geohash(list, name = 'default', precision= 6, city_id = 10, country_id = 6, city_name = 'Jakarta')
+        	```
+        
         
 Platform: UNKNOWN
 Classifier: Development Status :: 2 - Pre-Alpha
