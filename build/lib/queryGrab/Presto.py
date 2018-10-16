@@ -1,6 +1,5 @@
 import pandas as pd
 import time
-
 from pydatagateway import datagateway
 from datetime import datetime
 from .credentials import configPr
@@ -51,3 +50,18 @@ def queryPr(query, verbose = 1):
 	    print('dataframe is done in '+str(datetime.now()-start))
 
 	return df
+
+def pushPr(query, verbose = 1):
+
+	konPr = conPr(verbose= verbose)
+
+	if verbose:
+	    print('executing query!')
+	    start = datetime.now()
+
+	konPr.execute(query)
+
+	if verbose:
+	    print('query\'s been pushed in '+str(datetime.now()-start))
+
+	return None
