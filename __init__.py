@@ -4,7 +4,7 @@ from .Presto import queryPr, pushPr
 from .geoConverter import convert_polygon_to_geohash
 from .GoogleSheets import readGs
 
-__version__ = '1.2.0'
+__version__ = '1.1.0'
 
 def sample(N,e):
 	from math import ceil

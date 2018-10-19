@@ -1,6 +1,6 @@
 import pandas as pd
 import time
-from pyhive import presto
+from pydatagateway import datagateway
 from datetime import datetime
 from .credentials import configPr
 
@@ -19,7 +19,7 @@ def conPr(verbose=1, depth = 0):
 		if verbose:
 			print('connected')
 
-		konPr = presto.connect(**config).cursor()
+		konPr = datagateway.connect(**config).cursor()
 
 		return konPr
 

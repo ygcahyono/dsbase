@@ -3,6 +3,7 @@ setup.py
 queryGrab/GoogleSheets.py
 queryGrab/Presto.py
 queryGrab/__init__.py
+queryGrab/credentials.py
 queryGrab/geoConverter.py
 queryGrab/geoHelper.py
 queryGrab.egg-info/PKG-INFO
