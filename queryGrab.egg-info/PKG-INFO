@@ -8,7 +8,11 @@ Author-email: yogi.cahyono@grabtaxi.com
 License: UNKNOWN
 Description-Content-Type: UNKNOWN
 Description: 
+<<<<<<< HEAD
         **queryGrab** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
+=======
+        **DSBASE** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
         in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
         pydatagateway to become Pandas DataFrame.
         
@@ -32,7 +36,11 @@ Description:
         	'''
         
         ## Creds requirement.
+<<<<<<< HEAD
         	Please create your own credentials and put it into queryGrab folder (credentials.py).
+=======
+        	Please create your own credentials and put it into DSBASE folder (credentials.py).
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
         
         ## Functions.
         
@@ -40,12 +48,20 @@ Description:
         
         - [Presto](#1-presto)
         	- [x] Query to Pandas DF.
+<<<<<<< HEAD
         	- [ ] Delete table from Database.
         	- [ ] Insert rows to existing table.
         - [Geohash](#2-geohash)
         	- [x] Create Geohash file from geofences list.
         - [Google Sheet](#3-google-sheet)
         	- [ ] Read google docs from known docs name.
+=======
+        	- [x] Develop functions that could execute several sql queries. Eg: insert, drop, and delete.
+        - [Geohash](#2-geohash)
+        	- [x] Create Geohash file from geofences list.
+        - [Google Sheet](#3-google-sheet)
+        	- [x] Read google docs from known docs name.
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
         	- [ ] Gather all google docs file from cloud repo.
         
         ### Data Science related work.

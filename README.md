@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 **queryGrab** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
+=======
+**DSBASE** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
 pydatagateway to become Pandas DataFrame.
 
@@ -23,7 +27,11 @@ pydatagateway to become Pandas DataFrame.
 	'''
 
 ## Creds requirement.
+<<<<<<< HEAD
 	Please create your own credentials and put it into queryGrab folder (credentials.py).
+=======
+	Please create your own credentials and put it into DSBASE folder (credentials.py).
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 
 ## Functions.
 

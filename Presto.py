@@ -1,10 +1,6 @@
 import pandas as pd
 import time
-<<<<<<< HEAD
 from pydatagateway import datagateway
-=======
-from pyhive import presto
->>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 from datetime import datetime
 from .credentials import configPr
 
@@ -23,11 +19,7 @@ def conPr(verbose=1, depth = 0):
 		if verbose:
 			print('connected')
 
-<<<<<<< HEAD
 		konPr = datagateway.connect(**config).cursor()
-=======
-		konPr = presto.connect(**config).cursor()
->>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 
 		return konPr
 
@@ -43,13 +35,10 @@ def conPr(verbose=1, depth = 0):
 
 
 def queryPr(query, verbose = 1):
-<<<<<<< HEAD
-=======
 	''' 
 	this function is used to gather data from presto database and return it into pandas variable.
 	'''
 
->>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 
 	konPr = conPr(verbose= verbose)
 
@@ -67,8 +56,6 @@ def queryPr(query, verbose = 1):
 	return df
 
 def pushPr(query, verbose = 1):
-<<<<<<< HEAD
-=======
 	'''
 	this function is used to execute sql queries strings through pydatagateway function.
 	it can contain insert into and create table formats:
@@ -95,7 +82,6 @@ def pushPr(query, verbose = 1):
 	ps: be aware of the usage of insert table, the columns must be same as the actual 
 	stored columns in the database.
 	'''
->>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 
 	konPr = conPr(verbose= verbose)
 
