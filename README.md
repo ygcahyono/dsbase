@@ -31,12 +31,11 @@ pydatagateway to become Pandas DataFrame.
 
 - [Presto](#1-presto)
 	- [x] Query to Pandas DF.
-	- [ ] Delete table from Database.
-	- [ ] Insert rows to existing table.
+	- [x] Develop functions that could execute several sql queries. Eg: insert, drop, and delete.
 - [Geohash](#2-geohash)
 	- [x] Create Geohash file from geofences list.
 - [Google Sheet](#3-google-sheet)
-	- [ ] Read google docs from known docs name.
+	- [x] Read google docs from known docs name.
 	- [ ] Gather all google docs file from cloud repo.
 
 ### Data Science related work.
