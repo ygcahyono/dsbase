@@ -2,12 +2,8 @@ import setuptools
 import sys
 
 setuptools.setup(
-    name="queryGrab",
-<<<<<<< HEAD
-    version="1.2.0",
-=======
-    version="1.1.0",
->>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
+    name="dsbase",
+    version="1.3.0",
     url="",
     author="Yogi Cahyono",
     author_email="yogi.cahyono@grabtaxi.com",

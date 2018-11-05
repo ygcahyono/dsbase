@@ -1,10 +1,8 @@
-
 **DSBASE** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
 
 in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
 pydatagateway to become Pandas DataFrame.
 
-a
 ## Installation.
 
 1. Clone the depedencies.
@@ -39,12 +37,12 @@ a
 	- [x] Create Geohash file from geofences list.
 - [Google Sheet](#3-google-sheet)
 	- [x] Read google docs from known docs name.
+	- [x] Write, Insert, Delete, Share Google Sheets.
 	- [ ] Gather all google docs file from cloud repo.
 
 ### Data Science related work.
 
 - [x] Slovin's Formula
-
 
 
 ## How to do.
