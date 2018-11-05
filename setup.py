@@ -2,7 +2,7 @@ import setuptools
 import sys
 
 setuptools.setup(
-    name="dsbase",
+    name="queryGrab",
     version="1.3.0",
     url="",
     author="Yogi Cahyono",
