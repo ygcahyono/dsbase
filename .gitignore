@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+# credentials
+credentials.py
+.credentials.py
+
+=======
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -102,9 +109,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
+=======
 
 # credentials
 .credentials.py
 credentials.py
 *.credentials.py
 *credentials
+>>>>>>> f81134a9c235f4fe2eb2f080b6f3d5ab894faf73
