@@ -103,7 +103,7 @@ def shareGs(file_name, email_address, role):
     sh.share(email_address,role)
     print('Shared')
 
-def createGs(df, file_name, sheet=None, oauth2 = None , row = 1, col=1, add_worksheet=False, worksheet_title=None):
+def createGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, worksheet_title=None, oauth2 = None):
 
     gc = create_client(oauth2)
     file_exist = 0
@@ -120,9 +120,9 @@ def createGs(df, file_name, sheet=None, oauth2 = None , row = 1, col=1, add_work
     shareGs(file_name, email_address, role)
 
 
-def deleteGs(title):
+def deleteGs(title, oauth2 = None):
     
-    gc = create_client()
+    gc = create_client(oauth2)
     gc.delete(title)
 
     print('File deleted')
