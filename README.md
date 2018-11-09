@@ -21,7 +21,7 @@ pydatagateway to become Pandas DataFrame.
 	$ sudo python setup.py install
 	'''
 
-## Creds requirement.
+## Creds requirements.
 
 	Please create your own credentials and put it into queryGrab folder (credentials.py).
 

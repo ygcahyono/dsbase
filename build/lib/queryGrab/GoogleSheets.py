@@ -51,7 +51,7 @@ def readGs(file_name, sheet=None, header=True, oauth2 = None):
     """
     from pandas import DataFrame
     
-    gc = create_client(oauth2 = oauth2)
+    gc = create_client(oauth2)
     sh = gc.open(file_name)
     
     wks = find_worksheet(sh,sheet)
@@ -103,7 +103,7 @@ def shareGs(file_name, email_address, role, oauth2= None):
     sh.share(email_address,role)
     print('Shared')
 
-def createGs(df, file_name, email_address, role='writer', oauth2 = None):
+def createGs(df, file_name, email_address, parent_id = None, role='writer', oauth2 = None):
 
     gc = create_client(oauth2)
     file_exist = 0
@@ -111,7 +111,7 @@ def createGs(df, file_name, email_address, role='writer', oauth2 = None):
         sh = gc.open(file_name)
         file_exist = 1
     except:
-        sh = gc.create(file_name)
+        sh = gc.create(file_name, parent_id)
     
     if file_exist:
         raise ValueError('File already exist. If you want to overwrite the file, use writeGs. If you want to append the DataFrame, use insertGs.')
