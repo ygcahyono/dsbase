@@ -39,16 +39,17 @@ def find_worksheet(sh,sheet):
 
 def readGs(file_name, sheet=None, header=True, oauth2 = None):
     """
-        writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, worksheet_title=None) 
-        createGs(df, file_name, email_address, role='writer') : create spreadsheet file_name, write df pandas DataFrame, and share to email_address
+       readGs(file_name, sheet=None, header=True, oauth2 = None)
+       you can define the name of sheet using the param `sheet` and choose the header whether it's exist or not
         
         notes on oauth2: 
-        - the basic config for the authentification is true so it's using the drive_api2 for the connection, therefore it
-        s required to share the spreadsheet into this certain project email: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com
-        Follow this step to share the email: (Top Right > Share > Enter Email).
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
         - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
         - Fill null columns. example : df = df.fillna('')
     """
+
     from pandas import DataFrame
     
     gc = create_client(oauth2)
@@ -74,16 +75,27 @@ def readGs(file_name, sheet=None, header=True, oauth2 = None):
         
     return df
 
-def writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, worksheet_title=None, oauth2= None):
+def writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, sheet_title=None, oauth2= None):
+    """
+       writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, sheet_title=None, oauth2= None)
+       add_worksheet is used when you want to add the new sheet with own name and set the sheet_title with new string.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
 
     gc = create_client(oauth2)
     sh = gc.open(file_name)
     
     if add_worksheet:
-        if type(worksheet_title)!=type('title') or worksheet_title=='':
-            raise ValueError('worksheet_title must in string form')
+        if type(sheet_title)!=type('title') or sheet_title=='':
+            raise ValueError('sheet_title must in string form')
         else:
-            wks = sh.add_worksheet(worksheet_title)
+            wks = sh.add_worksheet(sheet_title)
     else:
         wks = find_worksheet(sh,sheet)
     
@@ -93,6 +105,17 @@ def writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, work
     print('Done writing')
 
 def shareGs(file_name, email_address, role, oauth2= None): 
+    """
+       shareGs(file_name, email_address, role, oauth2= None)
+       is a function for sharing the google sheets document to new email, the role of this function are writer or only reader.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
 
     gc = create_client(oauth2)
     sh = gc.open(file_name)
@@ -103,10 +126,21 @@ def shareGs(file_name, email_address, role, oauth2= None):
     sh.share(email_address,role)
     print('Shared')
 
-def createGs(df, file_name, email_address, parent_id = None, role='writer', oauth2 = None):
-
+def createGs(df, file_name, email_address, parent_id = None, role='writer', defined_title= False, worksheet_title= None,oauth2 = None):
+    """
+       createGs(df, file_name, email_address, parent_id = None, role='writer', defined_title= False, worksheet_title= None,oauth2 = None)
+       the value is valued true when you want to create your own sheet name at the first place, and worksheet_title value is string, choose your own.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
     gc = create_client(oauth2)
     file_exist = 0
+    
     try:
         sh = gc.open(file_name)
         file_exist = 1
@@ -116,11 +150,28 @@ def createGs(df, file_name, email_address, parent_id = None, role='writer', oaut
     if file_exist:
         raise ValueError('File already exist. If you want to overwrite the file, use writeGs. If you want to append the DataFrame, use insertGs.')
 
-    writeGs(df, file_name)
+    if defined_title:
+        writeGs(df, file_name, add_worksheet=defined_title, worksheet_title= worksheet_title)
+        sh = gc.open(file_name)
+        sh.del_worksheet(worksheet = sh.worksheets()[0])
+        
+    else:
+        writeGs(df, file_name)
+        
     shareGs(file_name, email_address, role)
 
-
 def deleteGs(title, oauth2 = None):
+    """
+       deleteGs(title, oauth2 = None)
+       delete the existing google sheet.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
     
     gc = create_client(oauth2)
     gc.delete(title)
