@@ -3,7 +3,7 @@ import sys
 
 setuptools.setup(
     name="queryGrab",
-    version="1.3.0",
+    version="1.4.0",
     url="",
     author="Yogi Cahyono",
     author_email="yogi.cahyono@grabtaxi.com",

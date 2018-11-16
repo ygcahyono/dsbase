@@ -30,7 +30,7 @@ Description: **DSBASE** is an package that hopefully keep on developed to help t
         	$ sudo python setup.py install
         	'''
         
-        ## Creds requirement.
+        ## Creds requirements.
         
         	Please create your own credentials and put it into queryGrab folder (credentials.py).
         

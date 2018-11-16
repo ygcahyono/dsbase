@@ -20,8 +20,8 @@ def create_client(oauth2):
         f = open("client_secret.json","w+")
         f.write(str(drive_api))
         f.close()
-        gc = pygsheets.authorize(outh_file='client_secret.json')
-        os.remove('client_secret.json')
+        gc = pygsheets.authorize(outh_file="client_secret.json")
+        os.remove("client_secret.json")
     
     return gc
 
@@ -101,7 +101,7 @@ def writeGs(df, file_name, sheet=None, row = 1, col=1, add_worksheet=False, shee
     
     wks.clear()
     print('Writing DataFrame...')
-    wks.set_dataframe(df,(row,col))
+    wks.set_dataframe(df,(row,col), fit = True)
     print('Done writing')
 
 def shareGs(file_name, email_address, role, oauth2= None): 
