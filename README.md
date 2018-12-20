@@ -55,7 +55,7 @@ Gather data from Presto Hive Grab Database and return `Pandas format DataFrame`.
 	example:
 	```
 	Q = ('''
-	select * from public.prejoin_bookings limit 10
+	select * from yourScheme.yourTable limit 10
 	''')
 	df = queryPr(Q)
 	```
