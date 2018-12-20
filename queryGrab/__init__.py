@@ -1,5 +1,5 @@
 from .Presto import queryPr, pushPr
-from .geoConverter import convert_polygon_to_geohash
+from .geoConverter import convert_polygon_to_geohash, to_geohash
 from .GoogleSheets import readGs, writeGs, shareGs, createGs, deleteGs
 
 __version__ = '1.4.0'
