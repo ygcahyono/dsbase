@@ -145,7 +145,7 @@ def createGs(df, file_name, email_address, parent_id = None, role='writer', defi
         sh = gc.open(file_name)
         file_exist = 1
     except:
-        
+
         if team_drive == True:
             gc.drive.enable_team_drive('0AMreYvM6a4T3Uk9PVA')
 
@@ -181,3 +181,92 @@ def deleteGs(title, oauth2 = None):
     gc.delete(title)
 
     print('File deleted')
+
+def createFolder(title, oauth2 = None):
+    """
+       deleteGs(title, oauth2 = None)
+       delete the existing google sheet.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
+
+    gc = create_client(oauth2)
+    drive_service= gc.driveService
+
+    folder_metadata = {
+    'name': title,
+    'mimeType': 'application/vnd.google-apps.folder'
+    }
+
+    try:
+        # print("we're officially here")
+        file = drive_service.files().create(body=folder_metadata,
+                                            fields='id').execute()
+        folder_parent_id= file.get('id')
+        # print(folder_parent_id)
+
+    except:
+        print('Your folder creation is failed, please re-check your method.')
+        folder_parent_id= None
+
+    return folder_parent_id
+
+def moveFile(f_folder_id= '', s_folder_id= '',is_folder= True, oauth2 = None):
+    """
+       deleteGs(title, oauth2 = None)
+       delete the existing google sheet.
+        
+        notes on oauth2: 
+        - the basic config for the authentification is true so it will use the drive_api2 for the connection in your credentials, 
+        - therefore, if you want to make the documents more secure you can pass the oauth2 value with non-None and share the googlesheets document
+        with the project mail: data-id-grab@quickstart-1538723811950.iam.gserviceaccount.com. How to? (Go to on the Top Right of document > Share > Enter Email).
+        - Param sheet accept integer or string. integer represents the position of worksheet in spreadsheet (1-based). string represent the name of worksheet. if sheet = None, then Sheet1 will be selected
+        - Fill null columns. example : df = df.fillna('')
+    """
+
+    gc = create_client(oauth2)
+    drive_service= gc.driveService
+
+    f_folder_id= f_folder_id
+    s_folder_id= s_folder_id
+
+    if is_folder:
+
+        try: 
+
+            # Retrieve the existing parents to remove
+            file = drive_service.files().get(fileId=f_folder_id,
+                                             fields='parents').execute()
+            print('Preparing moving folder to new folder')
+
+            # previous_parents = ",".join(file.get('parents'))
+            # Move the file to the new folder
+            file = drive_service.files().update(fileId=f_folder_id,
+                                                addParents=s_folder_id,
+                                                # removeParents=previous_parents,
+                                                fields='id, parents').execute()
+            print('Your folder has been moved')
+
+        except:
+            print('Your task failed, please re-check your method.')
+
+
+    else:
+
+            # Retrieve the existing parents to remove
+            file = drive_service.files().get(fileId=f_folder_id,
+                                             fields='parents').execute()
+
+            previous_parents = ",".join(file.get('parents'))
+            # Move the file to the new folder
+            file = drive_service.files().update(fileId=f_folder_id,
+                                                addParents=s_folder_id,
+                                                # removeParents=previous_parents,
+                                                fields='id, parents').execute()
+
+
