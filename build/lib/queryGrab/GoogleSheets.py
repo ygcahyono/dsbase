@@ -126,7 +126,7 @@ def shareGs(file_name, email_address, role, oauth2= None):
     sh.share(email_address,role)
     print('Shared')
 
-def createGs(df, file_name, email_address, parent_id = None, role='writer', defined_title= False, worksheet_title= None,oauth2 = None):
+def createGs(df, file_name, email_address, parent_id = None, role='writer', defined_title= False, worksheet_title= None,oauth2 = None, team_drive= False):
     """
        createGs(df, file_name, email_address, parent_id = None, role='writer', defined_title= False, worksheet_title= None,oauth2 = None)
        the value is valued true when you want to create your own sheet name at the first place, and worksheet_title value is string, choose your own.
@@ -145,6 +145,10 @@ def createGs(df, file_name, email_address, parent_id = None, role='writer', defi
         sh = gc.open(file_name)
         file_exist = 1
     except:
+        
+        if team_drive == True:
+            gc.drive.enable_team_drive('0AMreYvM6a4T3Uk9PVA')
+
         sh = gc.create(file_name, parent_id)
     
     if file_exist:
