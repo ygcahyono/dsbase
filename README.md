@@ -1,7 +1,4 @@
-**DSBASE** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
-
-in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
-pydatagateway to become Pandas DataFrame.
+**DSBASE** a package will keep be developed to help day to day work as a data servant to gather insight as fast and effective as possive. This package projected will be having some Statistical method for problem solving, connector to the database, create and process report on Google Drive, and many FUN project related Data Analytics / Science day to day aspects hopefully will be developed in this package.
 
 ## Installation.
 
@@ -31,18 +28,20 @@ pydatagateway to become Pandas DataFrame.
 ### Day to day work.
 
 - [Presto](#1-presto)
-	- [x] Query to Pandas DF.
+	- [x] Query to Pandas DF (PyHive connector).
 	- [x] Develop functions that could execute several sql queries. Eg: insert, drop, and delete.
 - [Geohash](#2-geohash)
 	- [x] Create Geohash file from geofences list.
 - [Google Sheet](#3-google-sheet)
 	- [x] Read google docs from known docs name.
 	- [x] Write, Insert, Delete, Share Google Sheets.
+	- [x] Create folder and move files
 	- [ ] Gather all google docs file from cloud repo.
 
-### Data Science related work.
+### Data Analytics related work.
 
 - [x] Slovin's Formula
+- [ ] Cohort Graphs
 
 
 ## How to do.
