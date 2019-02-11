@@ -6,7 +6,6 @@ Home-page: UNKNOWN
 Author: Yogi Cahyono
 Author-email: yogi.cahyono@grabtaxi.com
 License: UNKNOWN
-Description-Content-Type: UNKNOWN
 Description: **DSBASE** is an package that hopefully keep on developed to help the day to day work of Data Scientist 
         
         in Grab Indonesia. This base usage of this package is to pull the data from our Presto database using 
@@ -64,7 +63,7 @@ Description: **DSBASE** is an package that hopefully keep on developed to help t
         	example:
         	```
         	Q = ('''
-        	select * from public.prejoin_bookings limit 10
+        	select * from yourScheme.yourTable limit 10
         	''')
         	df = queryPr(Q)
         	```
