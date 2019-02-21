@@ -41,6 +41,7 @@
 ### Data Analytics related work.
 
 - [x] Slovin's Formula
+- [x] Parallelization (By Rows)
 - [ ] Cohort Graphs
 
 

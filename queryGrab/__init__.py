@@ -3,7 +3,7 @@ from .Presto import queryPr, pushPr
 from .geoConverter import convert_polygon_to_geohash, to_geohash
 from .GoogleSheets import readGs, writeGs, shareGs, createGs, deleteGs, createFolder, moveFile
 
-__version__ = '2.2.0'
+__version__ = '2.2.1'
 
 def sample(N,e):
 	from math import ceil
