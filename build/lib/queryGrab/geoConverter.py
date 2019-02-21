@@ -60,6 +60,8 @@ def to_geohash(name, is_neighbour= False, precision= 6, columns_to_keep=None, ci
     if print_geohash:
         ''' this used if you are lazy enough to open every csv.'''
         outputs= xdf['geohash']
+    else:
+        outputs='Done'
 
     export_path= os.path.abspath(os.getcwd() +'/'+ name + '_geohash.csv')
     xdf.to_csv(export_path, index=False)
@@ -83,15 +85,20 @@ def to_geohash(name, is_neighbour= False, precision= 6, columns_to_keep=None, ci
 
 def convert_polygon_to_geohash(lists, name= 'geohashFile', precision= 6, columns_to_keep=None, city_id=None, country_id=None, city_name=None, is_neighbour= False,print_geohash= False):
     ''' this function sum up all the process by converting list of pair geofences to geojson and creating geohash csv file '''
-
+    outputs= 0
     innerList= geoHelper.innerList(lists)
     f= open(name +".geojson","w+")
     f.write(geoHelper.createGeoJson(innerList, geohashName= city_name))
     f.close()
-    outputs= to_geohash(name= name, precision= precision, columns_to_keep=columns_to_keep, city_id=city_id, country_id=country_id, city_name=city_name, is_neighbour= is_neighbour, print_geohash=print_geohash)
+
+    try:
+        outputs= to_geohash(name= name, precision= precision, columns_to_keep=columns_to_keep, city_id=city_id, country_id=country_id, city_name=city_name, is_neighbour= is_neighbour, print_geohash=print_geohash)
+    except:
+        to_geohash(name= name, precision= precision, columns_to_keep=columns_to_keep, city_id=city_id, country_id=country_id, city_name=city_name, is_neighbour= is_neighbour, print_geohash=print_geohash)
+
     os.remove(os.getcwd() +'/'+ name + '.geojson')
 
-    return outputs
+    return print(outputs)
 
 
 
