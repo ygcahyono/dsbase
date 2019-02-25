@@ -3,7 +3,7 @@ from .Presto import queryPr, pushPr
 from .geoConverter import convert_polygon_to_geohash, to_geohash
 from .GoogleSheets import readGs, writeGs, shareGs, createGs, deleteGs, createFolder, moveFile
 
-__version__ = '2.2.0'
+__version__ = '2.2.1'
 
 def sample(N,e):
 	from math import ceil
@@ -16,8 +16,8 @@ def chunks(l, n):
         yield l[i:i + n]
 
 def parallelize(data, func, num_of_processes=cpu_count()):
-	import numpy as np
-	from multiprocessing import Pool
+    import numpy as np
+    from multiprocessing import Pool
 
     data_split = np.array_split(data, num_of_processes)
     pool = Pool(num_of_processes)
@@ -31,5 +31,5 @@ def run_on_subset(func, data_subset):
     return data_subset.apply(func, axis=1)
 
 def parallelize_on_rows(data, func, num_of_processes=cpu_count()):
-	from functools import partial
-    return parallelize(data, partial(run_on_subset, func), num_of_processes
+    from functools import partial
+    return parallelize(data, partial(run_on_subset, func), num_of_processes)

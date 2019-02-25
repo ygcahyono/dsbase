@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: queryGrab
-Version: 2.2.0
+Version: 2.2.1
 Summary: A package to help COUNTRY DATA SCIENTISTS to finish their straightforward works.
 Home-page: UNKNOWN
 Author: Yogi Cahyono
@@ -49,6 +49,7 @@ Description: **DSBASE** a package will keep be developed to help day to day work
         ### Data Analytics related work.
         
         - [x] Slovin's Formula
+        - [x] Multiprocessing / Parallelization (By Rows)
         - [ ] Cohort Graphs
         
         
