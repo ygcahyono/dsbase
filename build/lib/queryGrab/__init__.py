@@ -2,6 +2,7 @@ from multiprocessing import cpu_count
 from .Presto import queryPr, pushPr
 from .geoConverter import convert_polygon_to_geohash, to_geohash
 from .GoogleSheets import readGs, writeGs, shareGs, createGs, deleteGs, createFolder, moveFile
+import pandas as pd
 
 __version__ = '2.2.1'
 

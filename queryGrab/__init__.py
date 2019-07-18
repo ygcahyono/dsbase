@@ -2,6 +2,7 @@ from multiprocessing import cpu_count
 from .Presto import queryPr, pushPr
 from .geoConverter import convert_polygon_to_geohash, to_geohash
 from .GoogleSheets import readGs, writeGs, shareGs, createGs, deleteGs, createFolder, moveFile
+import pandas as pd
 
 __version__ = '2.2.1'
 
@@ -31,5 +32,9 @@ def run_on_subset(func, data_subset):
     return data_subset.apply(func, axis=1)
 
 def parallelize_on_rows(data, func, num_of_processes=cpu_count()):
+    '''
+    how to parallelize on rows?
+    
+    '''
     from functools import partial
     return parallelize(data, partial(run_on_subset, func), num_of_processes)
